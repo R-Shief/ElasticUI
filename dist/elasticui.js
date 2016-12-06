@@ -453,7 +453,13 @@ var elasticui;
         filters.filters.filter('euiTimestamp', TimestampFilter);
     })(filters = elasticui.filters || (elasticui.filters = {}));
 })(elasticui || (elasticui = {}));
-angular.module('elasticui.controllers', []).controller(elasticui.controllers);
+var elasticui;
+(function (elasticui) {
+    var controllers;
+    (function (_controllers) {
+        _controllers.controllers = angular.module('elasticui.controllers', []);
+    })(controllers = elasticui.controllers || (elasticui.controllers = {}));
+})(elasticui || (elasticui = {}));
 var elasticui;
 (function (elasticui) {
     var controllers;
@@ -665,7 +671,7 @@ var elasticui;
                 // apply search filters to the request
                 var combinedFilter = this.filters.getAsFilter();
                 if (combinedFilter != null) {
-                    request.filter(combinedFilter);
+                    request.post_filter(combinedFilter);
                 }
                 if (this.indexVM.query != null) {
                     request.query(this.indexVM.query);
